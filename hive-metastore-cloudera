@@ -29,17 +29,17 @@ ls         ......(Check the latest version and change it)
 sudo cp /usr/share/java/mysql-connector-java-5.1.38.jar /opt/cloudera/parcels/CDH-5.16.2-1.cdh5.16.2.p0.8/lib/hive/lib/
 
 
------**** Secure mysql ****-----
+-----**** Secure mysql (Fire this on DB(CM) host)****-----
 
 
 $ sudo /usr/bin/mysql_secure_installation 
 [...] 
-Enter current password for root (enter for none): 
-OK, successfully used password, moving on... 
+Enter password for user root: (your mysql password i.e root)
 [...] 
-Set root password? [Y/n] y 
-New password: 
-Re‐enter new password: 
+VALIDATE PASSWORD PLUGIN : N
+[...] 
+Change the password for root: N
+[...] 
 Remove anonymous users? [Y/n] Y 
 [...] 
 Disallow root login remotely? [Y/n] N 
@@ -58,7 +58,7 @@ $ mysql ‐u root ‐p
 Enter password: 
 mysql> CREATE DATABASE metastore; 
 mysql> USE metastore; 
-mysql> SOURCE /opt/cloudera/parcels/CDH-5.14.0-1.cdh5.14.0.p0.24/lib/hive/scripts/metastore/upgrade/mysql/hive-schema-1.1.0.mysql.sql;
+mysql> SOURCE /opt/cloudera/parcels/CDH-5.16.2-1.cdh5.16.2.p0.8/lib/hive/scripts/metastore/upgrade/mysql/hive-schema-1.1.0.mysql.sql;
 
 
 mysql> CREATE USER 'hive'@'metastorehost' IDENTIFIED BY 'mypassword'; 
