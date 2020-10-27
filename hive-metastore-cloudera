@@ -62,6 +62,7 @@ mysql> SOURCE /opt/cloudera/parcels/CDH-5.16.2-1.cdh5.16.2.p0.8/lib/hive/scripts
 
 
 mysql> CREATE USER 'hive'@'metastorehost' IDENTIFIED BY 'mypassword'; 
+				....(Create user for HMS)
 
 (Note : in the place of metastorehost use <pri-dns> of host on which HMS is running )
 
@@ -75,11 +76,11 @@ mysql> quit;
 
 ## Do following on HMS host
  
-sudo nano /opt/cloudera/parcels/CDH-5.14.0-1.cdh5.14.0.p0.24/etc/hive/conf.dist/hive-site.xml
+sudo nano /opt/cloudera/parcels/CDH-5.16.2-1.cdh5.16.2.p0.8/etc/hive/conf.dist/hive-site.xml
 
 <property>
   <name>javax.jdo.option.ConnectionURL</name>
-  <value>jdbc:mysql://ip-172-31-23-42.ec2.internal/metastore</value>
+  <value>jdbc:mysql://PrivateDNSof DB(i.e CM)/metastore</value>
   <description>the URL of the MySQL database</description>
 </property> 
 <property>
@@ -108,7 +109,7 @@ sudo nano /opt/cloudera/parcels/CDH-5.14.0-1.cdh5.14.0.p0.24/etc/hive/conf.dist/
 </property>
 <property>
   <name>hive.metastore.uris</name>
-  <value>thrift://ip-172-31-17-83.ec2.internal:9083</value>
+  <value>thrift://Private dns of HMS:9083</value>
   <description>IP address (or fully‐qualified domain name) and port of the metastore host</description>
 </property>
 <property>
