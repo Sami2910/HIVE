@@ -77,6 +77,7 @@ mysql> quit;
 ## Do following on HMS host
  
 sudo nano /opt/cloudera/parcels/CDH-5.16.2-1.cdh5.16.2.p0.8/etc/hive/conf.dist/hive-site.xml
+				.......(Comment Karo pahle ki properties ko)
 
 <property>
   <name>javax.jdo.option.ConnectionURL</name>
@@ -121,4 +122,25 @@ sudo nano /opt/cloudera/parcels/CDH-5.16.2-1.cdh5.16.2.p0.8/etc/hive/conf.dist/h
 ## Note : hive.metastore.uris is the only property that must be configured on all
 hosts (client, metastore, HiveServer). Rest other properties are required only on metastore host
 
+## Do following on HS2 host
+ 
+sudo nano /opt/cloudera/parcels/CDH-5.16.2-1.cdh5.16.2.p0.8/etc/hive/conf.dist/hive-site.xml
 
+<property>
+  <name>hive.metastore.uris</name>
+  <value>thrift://Private dns of HMS:9083</value>
+  <description>IP address (or fully‐qualified domain name) and port of the metastore host</description>
+</property>
+
+
+
+###To Check everything is done right we will start hive.
+## SSH to DB host (i.e CM)
+
+$ hive
+		......(This will start hive-CLI, not recommended in Production)
+$ SHOW DATABASES;
+		......(Will show default)
+$ CREATE TABLE tbl1 (a int);
+		......(Table is created)
+$ QUIT;
