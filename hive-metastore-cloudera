@@ -23,7 +23,10 @@ sudo service mysql status.   ....(To check whether it is started or not)
 
 sudo apt‐get install libmysql‐java 
 
-sudo cp /usr/share/java/mysql-connector-java-5.1.28.jar /opt/cloudera/parcels/CDH-5.14.0-1.cdh5.14.0.p0.24/lib/hive/lib/
+cd /opt/cloudera/parcels/ 
+ls         ......(Check the latest version and change it)
+
+sudo cp /usr/share/java/mysql-connector-java-5.1.38.jar /opt/cloudera/parcels/CDH-5.16.2-1.cdh5.16.2.p0.8/lib/hive/lib/
 
 
 -----**** Secure mysql ****-----
