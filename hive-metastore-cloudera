@@ -10,13 +10,16 @@ We will configure mysql db on a host different from HMS and HS2 service
 
 
 -----**** Install mysql ****-----
-
+ssh to CM    ....(We will install a DB on CM host)
 sudo apt-get install mysql-server -y
-
+	-> Set Password
+	-> Confirm Password
+	
+sudo service mysql status.   ....(To check whether it is started or not)	
 
 -----**** Install mysql connector ****-----
 
-## Do this on HS2 and HMS hosts
+## Do this on HS2 and HMS hosts (Open New terminal and conncet to HMS&HS2)
 
 sudo apt‐get install libmysql‐java 
 
